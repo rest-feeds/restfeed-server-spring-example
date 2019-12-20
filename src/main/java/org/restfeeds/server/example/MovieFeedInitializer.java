@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 public class MovieFeedInitializer implements ApplicationListener<ApplicationReadyEvent> {
 
   private static final Logger log = LoggerFactory.getLogger(MovieFeedInitializer.class);
+  private static final int MAX_ENTRIES = 10_005;
 
   private final FeedItemRepository feedItemRepository;
 
@@ -39,7 +40,8 @@ public class MovieFeedInitializer implements ApplicationListener<ApplicationRead
       ObjectMapper objectMapper =
           Jackson2ObjectMapperBuilder.json().failOnUnknownProperties(false).build();
       String line;
-      while ((line = bufferedReader.readLine()) != null) {
+      int count = 0;
+      while ((line = bufferedReader.readLine()) != null && count < MAX_ENTRIES) {
         Movie movie = objectMapper.readValue(line, Movie.class);
 
         feedItemRepository.append(
@@ -51,6 +53,7 @@ public class MovieFeedInitializer implements ApplicationListener<ApplicationRead
             Instant.now().toString(),
             movie);
 
+        count++;
       }
       log.info("Finished initializing the database");
 

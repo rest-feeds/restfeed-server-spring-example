@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/{feed}")
+@RequestMapping("/{feed:[a-zA-Z]+}")
 public class RestFeedEndpointController {
 
   static final Logger logger = LoggerFactory.getLogger(RestFeedEndpointController.class);
