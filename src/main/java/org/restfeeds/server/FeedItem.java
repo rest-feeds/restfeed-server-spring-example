@@ -1,87 +1,55 @@
 package org.restfeeds.server;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Objects;
 import java.util.StringJoiner;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
 public class FeedItem {
 
-  @Id
-  @JsonIgnore
-  private long offset;
+  private final String id;
+  private final String next;
+  private final String type;
+  private final String uri;
+  private final String method;
+  private final String timestamp;
+  private final Object data;
 
-  private String id;
-  private transient String next;
-  private String type;
-  private String uri;
-  private String method;
-  private String timestamp;
-  private Object data;
-
-  public long getOffset() {
-    return offset;
-  }
-
-  public void setOffset(long offset) {
-    this.offset = offset;
+  public FeedItem(String id, String next, String type, String uri, String method,
+      String timestamp, Object data) {
+    this.id = id;
+    this.next = next;
+    this.type = type;
+    this.uri = uri;
+    this.method = method;
+    this.timestamp = timestamp;
+    this.data = data;
   }
 
   public String getId() {
     return id;
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
   public String getNext() {
     return next;
-  }
-
-  public void setNext(String next) {
-    this.next = next;
   }
 
   public String getType() {
     return type;
   }
 
-  public void setType(String type) {
-    this.type = type;
-  }
-
   public String getUri() {
     return uri;
-  }
-
-  public void setUri(String uri) {
-    this.uri = uri;
   }
 
   public String getMethod() {
     return method;
   }
 
-  public void setMethod(String method) {
-    this.method = method;
-  }
-
   public String getTimestamp() {
     return timestamp;
   }
 
-  public void setTimestamp(String timestamp) {
-    this.timestamp = timestamp;
-  }
-
   public Object getData() {
     return data;
-  }
-
-  public void setData(Object data) {
-    this.data = data;
   }
 
   @Override
@@ -97,4 +65,26 @@ public class FeedItem {
         .toString();
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    FeedItem feedItem = (FeedItem) o;
+    return Objects.equals(id, feedItem.id) &&
+        Objects.equals(next, feedItem.next) &&
+        Objects.equals(type, feedItem.type) &&
+        Objects.equals(uri, feedItem.uri) &&
+        Objects.equals(method, feedItem.method) &&
+        Objects.equals(timestamp, feedItem.timestamp) &&
+        Objects.equals(data, feedItem.data);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, next, type, uri, method, timestamp, data);
+  }
 }

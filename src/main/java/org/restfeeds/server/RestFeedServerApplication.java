@@ -4,10 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RestfeedServerExampleApplication {
+public class RestFeedServerApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(RestfeedServerExampleApplication.class, args);
+    SpringApplication.run(RestFeedServerApplication.class, args);
   }
-
 }

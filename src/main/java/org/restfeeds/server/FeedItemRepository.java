@@ -4,5 +4,14 @@ import java.util.List;
 
 public interface FeedItemRepository {
 
-  List<FeedItem> findByOffsetGreaterThanEqual(long offset, int limit);
+  void append(
+      String feed,
+      String id,
+      String type,
+      String uri,
+      String method,
+      String timestamp,
+      Object data);
+
+  List<FeedItem> findByFeedPositionGreaterThanEqual(String feed, long position, int limit);
 }
