@@ -1,7 +1,6 @@
 steps:
   # Build and push docker image
   - name: 'gcr.io/cloud-builders/mvn'
-    entrypoint: './mvnw'
     args: ['compile', 'com.google.cloud.tools:jib-maven-plugin:1.8.0:build', '-Dimage=gcr.io/rest-feeds-test1/rest-feed-server-example-spring-web']
   # Deploy container image to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
