@@ -15,15 +15,15 @@ public class NextLinkBuilder {
     ServletUriComponentsBuilder builder = ServletUriComponentsBuilder.fromCurrentRequestUri();
     builder.replaceQueryParam("offset", nextPosition);
 
-//    // ServletUriComponentsBuilder does not reflect the x-forwarded-proto header?
-//    getCurrentHttpRequest()
-//        .ifPresent(
-//            request -> {
-//              String protoHeader = request.getHeader("x-forwarded-proto");
-//              if (protoHeader != null) {
-//                builder.scheme(protoHeader);
-//              }
-//            });
+    // ServletUriComponentsBuilder does not reflect the x-forwarded-proto header?
+    getCurrentHttpRequest()
+        .ifPresent(
+            request -> {
+              String protoHeader = request.getHeader("x-forwarded-proto");
+              if (protoHeader != null) {
+                builder.scheme(protoHeader);
+              }
+            });
 
     return builder.toUriString();
   }
