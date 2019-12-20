@@ -15,6 +15,7 @@ public class NextLinkBuilder {
     ServletUriComponentsBuilder builder = ServletUriComponentsBuilder.fromCurrentRequestUri();
     builder.replaceQueryParam("offset", nextPosition);
 
+    // ServletUriComponentsBuilder does not reflect the x-forwarded-proto header?
     getCurrentHttpRequest()
         .ifPresent(
             request -> {
