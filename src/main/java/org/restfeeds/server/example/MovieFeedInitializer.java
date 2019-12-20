@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.Instant;
 import java.util.UUID;
-import java.util.zip.GZIPInputStream;
 import org.restfeeds.server.FeedItemRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +19,6 @@ import org.springframework.stereotype.Component;
 public class MovieFeedInitializer implements ApplicationListener<ApplicationReadyEvent> {
 
   private static final Logger log = LoggerFactory.getLogger(MovieFeedInitializer.class);
-  private static final int MAX_ENTRIES = 10_005;
 
   private final FeedItemRepository feedItemRepository;
 
@@ -35,13 +33,11 @@ public class MovieFeedInitializer implements ApplicationListener<ApplicationRead
       BufferedReader bufferedReader =
           new BufferedReader(
               new InputStreamReader(
-                  new GZIPInputStream(
-                      new ClassPathResource("movie_ids_12_14_2019.json.gz").getInputStream())));
+                  new ClassPathResource("movie_ids_12_14_2019.json").getInputStream()));
       ObjectMapper objectMapper =
           Jackson2ObjectMapperBuilder.json().failOnUnknownProperties(false).build();
       String line;
-      int count = 0;
-      while ((line = bufferedReader.readLine()) != null && count < MAX_ENTRIES) {
+      while ((line = bufferedReader.readLine()) != null) {
         Movie movie = objectMapper.readValue(line, Movie.class);
 
         feedItemRepository.append(
@@ -53,7 +49,6 @@ public class MovieFeedInitializer implements ApplicationListener<ApplicationRead
             Instant.now().toString(),
             movie);
 
-        count++;
       }
       log.info("Finished initializing the database");
 

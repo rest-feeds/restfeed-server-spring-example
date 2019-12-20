@@ -6,3 +6,4 @@ with Spring Boot.
 The example implementation uses an embedded H2 database and connects with plain JDBC.
 
 A [themoviedb.org](https://www.themoviedb.org/) file export is used to populate data.
+The first 10.005 entries are imported.
