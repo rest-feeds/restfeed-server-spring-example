@@ -51,8 +51,8 @@ public class MovieFeedInitializer implements ApplicationListener<ApplicationRead
             Instant.now().toString(),
             movie);
 
-        log.info("Finished initializing the database");
       }
+      log.info("Finished initializing the database");
 
     } catch (IOException e) {
       throw new RuntimeException(e);
