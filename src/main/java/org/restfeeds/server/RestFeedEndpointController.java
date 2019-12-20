@@ -21,8 +21,8 @@ public class RestFeedEndpointController {
   static final Logger logger = LoggerFactory.getLogger(RestFeedEndpointController.class);
 
   static final int LIMIT = 1000;
+  static final Duration POLL_INTERVAL = Duration.of(50L, MILLIS);
   static final Duration TIMEOUT = Duration.of(5, SECONDS);
-  static final Duration DELAY = Duration.of(50L, MILLIS);
 
   private final FeedItemRepository feedRepository;
 
@@ -60,7 +60,7 @@ public class RestFeedEndpointController {
 
       try {
         logger.trace("No items found. Wait a bit and then retry again.");
-        Thread.sleep(DELAY.toMillis());
+        Thread.sleep(POLL_INTERVAL.toMillis());
       } catch (InterruptedException e) {
         logger.debug(
             "Thread was interrupted while sleeping. Probably a graceful shutdown was triggered. Try to send the current response to the client.");
