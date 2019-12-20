@@ -33,7 +33,7 @@ public class MovieFeedInitializer implements ApplicationListener<ApplicationRead
       BufferedReader bufferedReader =
           new BufferedReader(
               new InputStreamReader(
-                  new ClassPathResource("movie_ids_12_14_2019.json").getInputStream()));
+                  new ClassPathResource("example/movie_ids_12_14_2019.json").getInputStream()));
       ObjectMapper objectMapper =
           Jackson2ObjectMapperBuilder.json().failOnUnknownProperties(false).build();
       String line;
