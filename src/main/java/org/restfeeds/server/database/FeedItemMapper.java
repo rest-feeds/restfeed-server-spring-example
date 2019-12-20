@@ -27,7 +27,7 @@ class FeedItemMapper implements RowMapper<FeedItem> {
     String method = rs.getString("method");
     Timestamp timestamp = rs.getTimestamp("timestamp");
     String data = rs.getString("data");
-    String nextLink = nextLinkBuilder.nextLink(feed, position + 1);
+    String nextLink = nextLinkBuilder.nextLink(feed, position);
     String timestampAsString = timestamp == null ? null : timestamp.toInstant().toString();
     Object dataAsObject = DataSerializer.toObject(data);
     return new FeedItem(id, nextLink, type, uri, method, timestampAsString, dataAsObject);
