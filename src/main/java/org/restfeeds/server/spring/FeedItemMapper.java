@@ -1,19 +1,18 @@
-package org.restfeeds.server.database;
+package org.restfeeds.server.spring;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import org.restfeeds.server.FeedItem;
-import org.restfeeds.server.NextLinkBuilder;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 @Component
 class FeedItemMapper implements RowMapper<FeedItem> {
 
-  private final NextLinkBuilder nextLinkBuilder;
+  private final CurrentRequestNextLinkBuilder nextLinkBuilder;
 
-  FeedItemMapper(NextLinkBuilder nextLinkBuilder) {
+  FeedItemMapper(CurrentRequestNextLinkBuilder nextLinkBuilder) {
     this.nextLinkBuilder = nextLinkBuilder;
   }
 

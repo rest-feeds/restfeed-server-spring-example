@@ -8,4 +8,9 @@ class RestfeedServerExampleApplicationTests {
 
   @Test
   void contextLoads() {}
+
+  @Test
+  void getEmptyFeed() {
+
+  }
 }

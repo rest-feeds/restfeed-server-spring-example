@@ -1,4 +1,4 @@
-package org.restfeeds.server.database;
+package org.restfeeds.server.spring;
 
 import java.util.List;
 import org.restfeeds.server.FeedItem;

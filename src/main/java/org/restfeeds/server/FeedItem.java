@@ -13,8 +13,14 @@ public class FeedItem {
   private final String timestamp;
   private final Object data;
 
-  public FeedItem(String id, String next, String type, String uri, String method,
-      String timestamp, Object data) {
+  public FeedItem(
+      String id,
+      String next,
+      String type,
+      String uri,
+      String method,
+      String timestamp,
+      Object data) {
     this.id = id;
     this.next = next;
     this.type = type;
@@ -74,13 +80,13 @@ public class FeedItem {
       return false;
     }
     FeedItem feedItem = (FeedItem) o;
-    return Objects.equals(id, feedItem.id) &&
-        Objects.equals(next, feedItem.next) &&
-        Objects.equals(type, feedItem.type) &&
-        Objects.equals(uri, feedItem.uri) &&
-        Objects.equals(method, feedItem.method) &&
-        Objects.equals(timestamp, feedItem.timestamp) &&
-        Objects.equals(data, feedItem.data);
+    return Objects.equals(id, feedItem.id)
+        && Objects.equals(next, feedItem.next)
+        && Objects.equals(type, feedItem.type)
+        && Objects.equals(uri, feedItem.uri)
+        && Objects.equals(method, feedItem.method)
+        && Objects.equals(timestamp, feedItem.timestamp)
+        && Objects.equals(data, feedItem.data);
   }
 
   @Override
