@@ -26,7 +26,7 @@ jobs:
     
       - run: ./mvnw compile test com.google.cloud.tools:jib-maven-plugin:1.8.0:build -Dimage=gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}
       
-      - name: Install beta commands and deploy on cloud run
+      - name: Deploy on cloud run
         uses: actions/gcloud/cli@master
         with:
-          args: "components install beta --quiet && gcloud beta run deploy ${{ secrets.GCLOUD_APP_NAME }} --quiet --image eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }} --project ${{ secrets.GCLOUD_PROJECT }} --region europe-west1 --platform managed"
+          args: "gcloud run deploy ${{ secrets.GCLOUD_APP_NAME }} --quiet --image gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }} --project ${{ secrets.GCLOUD_PROJECT }} --region europe-west1 --platform managed"
