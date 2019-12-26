@@ -24,6 +24,7 @@ jobs:
         with:
           args: "auth configure-docker --quiet"
     
+      - run: echo ${{ secrets.GCLOUD_PROJECT }}
       - run: ./mvnw compile test com.google.cloud.tools:jib-maven-plugin:1.8.0:build -Dimage=gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}
       
       - name: Deploy on cloud run
