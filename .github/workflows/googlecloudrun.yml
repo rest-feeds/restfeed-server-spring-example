@@ -29,7 +29,7 @@ jobs:
         with:
           args: "components install docker-credential-gcr"
 
-      - run: sudo ln -s /opt/google-cloud-sdk/bin/docker-credential-gcr /bin/docker-credential-gcr
+      - run: sudo ln -s /opt/google-cloud-sdk/bin/docker-credential-gcr /usr/bin/docker-credential-gcr
 
       - run: docker-credential-gcr config --token-source="gcloud"
 
