@@ -24,9 +24,9 @@ jobs:
         with:
           args: "auth configure-docker --quiet"
     
-      - run: echo ${{ secrets.GCLOUD_PROJECT }}
-      - run: ./mvnw compile test com.google.cloud.tools:jib-maven-plugin:1.8.0:build -Dimage=gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}
-      
+#      - run: ./mvnw compile test com.google.cloud.tools:jib-maven-plugin:1.8.0:build -Dimage=gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}
+      - run: ./mvnw compile test com.google.cloud.tools:jib-maven-plugin:1.8.0:build -Dimage=gcr.io/ rest-feeds-test1/restfeed-server-java-example-spring
+     
       - name: Deploy on cloud run
         uses: actions/gcloud/cli@master
         with:
