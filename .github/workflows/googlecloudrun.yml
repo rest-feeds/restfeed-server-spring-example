@@ -23,10 +23,14 @@ jobs:
         uses: actions/gcloud/cli@master
         with:
           args: "auth configure-docker --quiet"
-    
-#      - run: ./mvnw compile test com.google.cloud.tools:jib-maven-plugin:1.8.0:build -Dimage=gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}
-      - run: ./mvnw compile test com.google.cloud.tools:jib-maven-plugin:1.8.0:build -Dimage=gcr.io/rest-feeds-test1/restfeed-server-java-example-spring
-     
+
+      - name: Install docker-credential-gcr
+        uses: actions/gcloud/cli@master
+        with:
+          args: "components install docker-credential-gcr"
+
+      - run: ./mvnw compile test com.google.cloud.tools:jib-maven-plugin:1.8.0:build -Dimage=gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}
+
       - name: Deploy on cloud run
         uses: actions/gcloud/cli@master
         with:
