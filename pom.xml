@@ -13,7 +13,7 @@
   <artifactId>restfeed-server-example</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>restfeed-server-example</name>
-  <description>Demo project for restfeeds</description>
+  <description>Demo project for a restfeed server</description>
 
   <properties>
     <java.version>1.8</java.version>
@@ -39,6 +39,12 @@
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
       <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.restfeeds</groupId>
+      <artifactId>restfeed-server</artifactId>
+      <version>0.0.1</version>
     </dependency>
 
     <dependency>
