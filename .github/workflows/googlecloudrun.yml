@@ -5,14 +5,6 @@ on:
       - 'master'
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-    - run: ./mvnw test
   deploy:
     name: Deploy job
     runs-on: ubuntu-latest
@@ -32,9 +24,10 @@ jobs:
         with:
           args: "auth configure-docker --quiet"
     
-      - run: ./mvnw compile com.google.cloud.tools:jib-maven-plugin:1.8.0:build -Dimage=gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}
-      
-      - name: Install beta commands and deploy on cloud run
+#      - run: ./mvnw compile test com.google.cloud.tools:jib-maven-plugin:1.8.0:build -Dimage=gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}
+      - run: ./mvnw compile test com.google.cloud.tools:jib-maven-plugin:1.8.0:build -Dimage=gcr.io/rest-feeds-test1/restfeed-server-java-example-spring
+     
+      - name: Deploy on cloud run
         uses: actions/gcloud/cli@master
         with:
-          args: "components install beta --quiet && gcloud beta run deploy ${{ secrets.GCLOUD_APP_NAME }} --quiet --image eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }} --project ${{ secrets.GCLOUD_PROJECT }} --region europe-west1 --platform managed"
+          args: "gcloud run deploy ${{ secrets.GCLOUD_APP_NAME }} --quiet --image gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }} --project ${{ secrets.GCLOUD_PROJECT }} --region europe-west1 --platform managed"
