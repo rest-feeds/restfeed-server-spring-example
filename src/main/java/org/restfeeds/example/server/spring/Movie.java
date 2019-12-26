@@ -1,4 +1,4 @@
-package org.restfeeds.server.spring.example;
+package org.restfeeds.example.server.spring;
 
 import java.math.BigDecimal;
 

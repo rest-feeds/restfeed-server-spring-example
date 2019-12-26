@@ -1,4 +1,4 @@
-package org.restfeeds.server.spring.example;
+package org.restfeeds.example.server.spring;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.BufferedReader;
@@ -15,6 +15,11 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.stereotype.Component;
 
+/**
+ * Initialize the database with some feed items from a static file.
+ *
+ * In real life, feed items are appended based on application events.
+ */
 @Component
 public class MovieFeedInitializer implements ApplicationListener<ApplicationReadyEvent> {
 
