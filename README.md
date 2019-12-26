@@ -1,7 +1,7 @@
 # rest-feed-server-example-spring-web
 
 This is an example implementation, how to implement a [REST Feed](https://rest-feeds.org) Endpoint 
-with Spring Boot.
+with the [restfeed-server-java](https://github.com/rest-feeds/restfeed-server-java) library and Spring Boot.
 
 The example implementation uses an embedded H2 database and connects with plain JDBC.
 
