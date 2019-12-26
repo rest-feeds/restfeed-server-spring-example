@@ -29,6 +29,8 @@ jobs:
         with:
           args: "components install docker-credential-gcr"
 
+      - run: ln -s /opt/google-cloud-sdk/bin/docker-credential-gcr /usr/bin/docker-credential-gcr
+
       - run: docker-credential-gcr config --token-source="gcloud"
 
       - run: ./mvnw compile test com.google.cloud.tools:jib-maven-plugin:1.8.0:build -Dimage=gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}
