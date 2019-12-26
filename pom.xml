@@ -10,9 +10,9 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>org.restfeeds</groupId>
-  <artifactId>restfeed-server-example</artifactId>
+  <artifactId>restfeed-server-java-example-spring</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>restfeed-server-example</name>
+  <name>restfeed-server-java-example-spring</name>
   <description>Demo project for a restfeed server</description>
 
   <properties>
