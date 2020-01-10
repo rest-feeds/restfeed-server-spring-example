@@ -1,4 +1,4 @@
-# restfeed-server-java-example-spring
+# restfeed-server-spring-example
 
 This is an example implementation, how to implement a [REST Feed](http://rest-feeds.org) Endpoint 
 with Spring Boot and the [restfeed-server-spring](https://github.com/rest-feeds/restfeed-server-spring) library.
