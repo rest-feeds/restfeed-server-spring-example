@@ -1,7 +1,7 @@
 steps:
   # Build and push docker image
   - name: 'gcr.io/cloud-builders/mvn'
-    args: ['compile', 'com.google.cloud.tools:jib-maven-plugin:1.8.0:build', '-Dimage=gcr.io/rest-feeds-test1/restfeed-server-java-example-spring']
+    args: ['compile', 'com.google.cloud.tools:jib-maven-plugin:1.8.0:build', '-Dimage=gcr.io/rest-feeds-test1/restfeed-server-spring-example']
   # Deploy container image to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['run', 'deploy', 'restfeed-server-java-example-spring', '--image', 'gcr.io/rest-feeds-test1/restfeed-server-java-example-spring', '--region', 'europe-west1', '--platform', 'managed', '--allow-unauthenticated']
+    args: ['run', 'deploy', 'restfeed-server-spring-example', '--image', 'gcr.io/rest-feeds-test1/restfeed-server-spring-example', '--region', 'europe-west1', '--platform', 'managed', '--allow-unauthenticated']
